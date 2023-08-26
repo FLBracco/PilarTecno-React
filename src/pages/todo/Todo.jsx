@@ -1,11 +1,13 @@
-import React, {useState } from "react";
-import { Grid, Paper, Button, Card, Stack, CardHeader, CardContent, TextField, Checkbox, Typography} from '@mui/material';
+import React, {useState} from "react";
+import { Grid, Paper, Box, Button, Card, Stack, CardHeader, CardContent, TextField, Checkbox, Typography} from '@mui/material';
 import { v4 as uuid } from 'uuid';
 import { useSelector, useDispatch } from "react-redux";
 import { appSelector, appActions } from "../../redux/appRedux";
-
+import { Link } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
 
 const Todo = () => {
+
     const dispatch = useDispatch()
     const todo = useSelector(appSelector.todo)
 
@@ -28,9 +30,22 @@ const Todo = () => {
         dispatch(appActions.deleteTodo(id))
     }
 
+
     return (
         <>
-        <Grid container spacing={3}>
+            <Grid container spacing={3}>
+                <Grid item xs={6}>
+                    <Link to="/">
+                        <Paper sx={{ p: 2 }}>
+                            <Box>
+                                <h3>Volver atras</h3>
+                                <Button variant='outlined' color='secondary'> <HomeIcon fontSize="small"/> INICIO</Button>
+                            </Box>
+                        </Paper>
+                    </Link>
+                </Grid>
+            </Grid>
+            <Grid container spacing={3}>
             <Grid item xs={12}>
                 <Paper sx={{p: 2}}>
                     <Card>
@@ -70,8 +85,9 @@ const Todo = () => {
                     </Card>
                 </Paper>
             </Grid>
-        </Grid> 
+        </Grid>
         </>
     );
 };
+
 export default Todo;
