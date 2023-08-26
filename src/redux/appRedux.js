@@ -1,13 +1,16 @@
 const ADD_TODO = "ADD_TODO";
 const COMPLETE_TODO = "COMPLETE_TODO";
 const DELETE_TODO = "DELETE_TODO";
+const SET_LOADING = "SET_LOADING"
 
 const stateInitial = {
-    todo: []
+    todo: [],
+    loading: false
 }
 
 export const appSelector = {
-    todo: (state) => state.todo
+    todo: (state) => state.todo,
+    loading: (state) => state.loading
 }
 
 export const appActions = {
@@ -22,7 +25,11 @@ export const appActions = {
     deleteTodo: (id) => ({
         type: DELETE_TODO,
         id,
-    })
+    }),
+    loading: (value) => ({
+        type: SET_LOADING,
+        value,
+    }),
 }
 
 export const appReducer = (state = stateInitial, action) =>{
@@ -55,6 +62,13 @@ export const appReducer = (state = stateInitial, action) =>{
                 todo: state.todo.filter((t) => t.id !== action.id)
             }
         
+
+        case SET_LOADING:
+            return{
+                ...state,
+                loading: action.value
+            }
+    
         default:
             return state;
     }
