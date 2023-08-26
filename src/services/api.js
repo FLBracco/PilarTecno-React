@@ -1,4 +1,5 @@
 import { BASE_URL, IMG_URL } from "../constants/index"
+import axios from "axios"
 
 const headers = ()=> {
     const headers = {
@@ -24,6 +25,7 @@ const GET = async (url) =>{
     let res = null;
     try{
         res = await axios.get(url, headers());
+        console.log(res);
         return (res && res.data) || null
     }catch(error){
         throw(error && error.response.data.error) || errorMessage
@@ -62,5 +64,5 @@ export default {
     PATCH,
     DELETE,
     pokemons: `${BASE_URL}/pokemon`,
-    
+
 }
