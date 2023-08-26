@@ -12,7 +12,7 @@ export const drawerMenu = [
             },
             {
                 title: "FetchList",
-                path: "/fetchList"
+                path: "/fetchlist"
             }
         ]
     }
@@ -24,3 +24,4 @@ export const popMenu = [
         path: "/",
     },
 ]
+    
