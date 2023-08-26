@@ -2,7 +2,8 @@ import { Navigate, useRoutes } from 'react-router-dom';
 import DashboardLayout from "./layouts/DashboardLayout";
 import NotFound from "./layouts/NotFound";
 import Dashboard from './dashboard/Dashboard.jsx';
-import FetchList from './fetch-list/FetchList.jsx';
+import FetchList from './fetch-list/fetchList.jsx';
+import Todo from './todo/Todo.jsx';
 
 const Routes = () => {
     return useRoutes([
@@ -11,6 +12,7 @@ const Routes = () => {
         element: <DashboardLayout/>,
         children: [
         { path: '', element: <Dashboard />},
+        { path: '/todo', element: <Todo />},
         { path: '/fetchList', element: <FetchList />},
         ]
     },

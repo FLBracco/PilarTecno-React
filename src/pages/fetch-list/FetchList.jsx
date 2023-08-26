@@ -9,8 +9,6 @@ import { useDispatch } from "react-redux";
 import POKE_IMG from '../../assets/images/poke.png'
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListSubheader from '@mui/material/ListSubheader';
 
 const style = {
     position: 'absolute',
@@ -25,6 +23,7 @@ const style = {
 };
 
 const FetchList = () => {
+
     const dispatch = useDispatch()
     const [pokemons,setPokemons] = useState(null)
     const [next, setNext] = useState('')
@@ -118,10 +117,22 @@ const FetchList = () => {
             console.log(error);
         }
     }
-
+    
     return (
         <>
-        <Grid container spacing={3}>
+            <Grid container spacing={3}>
+                <Grid item xs={6}>
+                    <Link to="/">
+                        <Paper sx={{ p: 2 }}>
+                            <Box>
+                                <h3>Volver atras</h3>
+                                <Button variant='outlined' color='secondary'> <HomeIcon fontSize="small"/> INICIO</Button>
+                            </Box>
+                        </Paper>
+                    </Link>
+                </Grid>
+            </Grid>
+            <Grid container spacing={3}>
             <Grid item xs={12}>
             <Paper sx={{p: 2}} variant='outlined'>
                 <Grid item xs={12}>
@@ -199,7 +210,6 @@ const FetchList = () => {
                 />
             </Box>
         </Modal>
-            
         </>
     );
 };
